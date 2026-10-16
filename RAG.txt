@@ -1,0 +1,45 @@
+from langchain_core.documents import Document
+from langchain_openai import OpenAIEmbeddings,ChatOpenAI
+from langchain_chroma import Chroma
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+
+The Document stores all of the original PDF files, text files and documents that contain the original knowledge, data and information.
+OpenAIEmbeddings is the embedding model that converts texts into vectors.
+Chroma is the vector database.
+RecursiveCharacterTextSplitter is the toolkit that splits the documents into chunks.
+
+
+<> documents = Document(page_content = "St.Xavier's College- CSIT 2023- Attendance_record.pdf")
+: documents has the PDF file that contains all of the information.
+
+<> splitter = RecursiveCharacterTextSplitter(chunk_size = 500,chunk_overlap = 50)
+: splitter sets a rule that a chunk must only contain 500 characters maximum and any chunks can share only 50 keywords between each other
+
+<> chunks = splitter.split_documents(documents)
+: This is where the document is actually splitted into chunks.
+
+<> embedding_model = OpenAIEmbeddings()
+: This is OpenAI's own embedder model's object.
+
+<> vector_database = Chroma.from_documents(chunks,embedding_model)
+: The chunk texts are converted into vector chunks by the embedding model and the vector chunks will be stored in Chroma; which is the vector database.
+
+<> user_input = "How much attendance is required?"
+: The user input provided through web application.
+
+<> relevant_information = vector_database.similarity_search(user_input,k=2)
+: By using user input as a hint to search for keywords with similar meaning in the vector chunks inside of Chroma(this is called Semantic Search), 
+this is how information relevant to the user input is found. 
+
+<> context = "\n".join(doc.page_content for doc in relevant_information)
+: The texts in the relevant chunks are joined. 
+
+<> llm = ChatOpenAI(model="gpt-4.1-mini")
+: This is the ChatGPT LLM itself.
+
+<> ai_generated_answer = llm.invoke(f"GPT, please answer using only this context : {context} \n Question asked by the user : {user_input})
+: The LLM is sent this saying that it should use this context and user input to generate an accurate answer.
+
+<> print(ai_generated_answer.content)
+: This is the ChatGPT generated responsee to the user's input.
