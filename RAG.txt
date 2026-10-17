@@ -43,3 +43,8 @@ this is how information relevant to the user input is found.
 
 <> print(ai_generated_answer.content)
 : This is the ChatGPT generated responsee to the user's input.
+
+
+# To upload a file to be able to use it in Jupyter Notebook, upload the file in the folder where the notebook belongs. Then the path should be:
+<> external_file = pd.read_csv('Folder_name/File_name')
+
