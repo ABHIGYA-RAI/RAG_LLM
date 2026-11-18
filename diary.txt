@@ -1,0 +1,6 @@
+FastAPI is the backend framework that builds the API.
+
+The file uploaded in Swagger UI is sent to the server a
+
+Once the Uvicorn server gets the file, it will send back a JSON format
+response of the filename.
