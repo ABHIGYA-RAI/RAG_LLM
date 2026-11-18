@@ -4,3 +4,5 @@ The file uploaded in Swagger UI is sent to the server a
 
 Once the Uvicorn server gets the file, it will send back a JSON format
 response of the filename.
+
+Second step is to validate whether the uploaded file is a PDF.
