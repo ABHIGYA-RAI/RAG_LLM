@@ -41,7 +41,7 @@ The system follows a modular RAG pipeline:
 | Generative AI | Ollama |
 | AI Architecture | Retrieval-Augmented Generation (RAG) |
 | Database | MySQL |
-| API Development | REST API |
+| API Development | FastAPI |
 | Data Serialization | JSON |
 | LLM Runtime | Ollama |
 
