@@ -1,6 +1,15 @@
 FastAPI is the backend framework that builds the API.
 
-The file uploaded in Swagger UI is sent to the server a
+The file uploaded in Swagger UI is sent to the server.
 
 Once the Uvicorn server gets the file, it will send back a JSON format
 response of the filename.
+
+Implementation:
+1. Installed all the dependencies.
+2. Created and activated the virtual environment.
+3. Made the server respond with the file name.
+4. Validated to check if the uploaded file is a PDF.
+5. Server responded with filename, count of characters and pages.
+6. Defined the data type of number of pages, characters and file name.
+
